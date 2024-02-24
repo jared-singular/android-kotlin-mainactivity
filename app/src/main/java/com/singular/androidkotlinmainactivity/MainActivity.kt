@@ -12,9 +12,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.singular.androidkotlinmainactivity.ui.theme.AndroidKotlinMainActivityTheme
+import com.singular.sdk.Attributes
+import com.singular.sdk.Events
 import com.singular.sdk.Singular
 import com.singular.sdk.SingularConfig
 import com.singular.sdk.SingularLinkParams
+import org.json.JSONObject
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,20 +60,13 @@ class MainActivity : ComponentActivity() {
         Log.d("Singular", "--MainActivity-- Lifecycle onStop")
     }
 
-    private fun initSingularSDK(){
+    private fun initSingularSDK() {
         val singularSdkKey = BuildConfig.SINGULAR_SDK_KEY
         val singularSdkSecret = BuildConfig.SINGULAR_SDK_SECRET
 
         // Singular Initialization Object
         val config = SingularConfig(singularSdkKey, singularSdkSecret)
-            .withCustomUserId("jared123")
             .withDDLTimeoutInSec(30)
-            .withLoggingEnabled().withLogLevel(3)
-
-        // Call AttributionInfoHandler
-        config.withSingularDeviceAttribution { attributionInfo ->
-            attributionInfoHandler(attributionInfo)
-        }
 
         // Call SingularLinkHandler
         config.withSingularLink(intent) { singularLinkParams ->
@@ -79,39 +75,33 @@ class MainActivity : ComponentActivity() {
 
         Singular.init(this, config)
 
-        // Send Simple Custom Event
-        Singular.event("Singular SDK Initialized")
-
-//        // Send Standard Event with Args
-//        val att = JSONObject().apply {
-//            put(Attributes.sngAttrContent.toString(), "GenericTutorialFlow")
-//            put(Attributes.sngAttrContentId.toString(), 32)
-//            put(Attributes.sngAttrContentType.toString(), "WelcomeVideo")
-//            put(Attributes.sngAttrSuccess.toString(), 75)
-//        }
-//        Singular.eventJSON(Events.sngTutorialComplete.toString(), att)
-//
-//        // Send Simple Revenue (IAP) Event
-//        Singular.revenue("USD", 0.99)
-//
-//        // Send Custom Revenue
-//        Singular.customRevenue("Subscription_1yr", "USD", 49.99)
-//
-//        Singular.event(Events.sngTutorialComplete.toString())
-
     }
 
-    private fun attributionInfoHandler(attributionInfo: Map<String?, Any?>?) {
-        if (attributionInfo == null) {
-            Log.d("Singular", " -- Singular attributionInfo is nil")
-            return
-        } else{
-            Log.d("Singular", " -- Singular Attribution Info: $attributionInfo")
-            // Add Attribution handling code here
+    fun sendSingularEvents(){
+        /* Singular Standard Events: Full List and Recommended Events by Vertical
+        See: https://support.singular.net/hc/en-us/articles/7648172966299-Singular-Standard-Events-Full-List-and-Recommended-Events-by-Vertical */
+
+        /* EXAMPLE: Send Singular Standard Event "TutorialComplete" when User finishes viewing the tutorial */
+        Singular.event(Events.sngTutorialComplete.toString())
+
+        /* EXAMPLE: Alternatively, you may include attributes using a JSON Object. Send Singular Standard Event "TutorialComplete" when User finishes viewing the tutorial with attributes */
+        val att = JSONObject().apply {
+            put(Attributes.sngAttrContent.toString(), "GenericTutorialFlow")
+            put(Attributes.sngAttrContentId.toString(), 32)
+            put(Attributes.sngAttrContentType.toString(), "WelcomeVideo")
+            put(Attributes.sngAttrSuccess.toString(), 75)
         }
+        Singular.eventJSON(Events.sngTutorialComplete.toString(), att)
+
+        // EXAMPLE: Send a Simple Revenue (IAP) Event
+        Singular.revenue("USD", 0.99)
+
+        // EXAMPLE: Send Custom Revenue Event with custom name
+        Singular.customRevenue("Subscription_1yr", "USD", 49.99)
     }
 
     private fun handleDeeplink(singularLinkParams: SingularLinkParams){
+        /* The handleDeeplink function parses the specific values from the Intent passed to the Singular SDK. */
         Log.d("Singular", "Singular handleDeeplink()")
         val deeplink = singularLinkParams.deeplink
         val passthrough = singularLinkParams.passthrough
@@ -124,7 +114,6 @@ class MainActivity : ComponentActivity() {
         Log.d("Singular", "isDeferred: $isDeferred")
         Log.d("Singular", "urlParams: $urlParams")
     }
-
 }
 
 @Composable
