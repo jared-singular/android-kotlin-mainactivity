@@ -1,12 +1,10 @@
 # Android Kotlin MainActivity Test App
-
 This application was created for:
 * Testing and illustrating the Application Lifecycles.
 * Testing and illustrating the MainActivity Lifecycles.
 * Invoking the Singular SDK from the MainActivity Class to track Installs.
 * Testing the handling of a Singular Link with deeplink and deferred deep linking enabled.
 * Triggering in-app events using Singular functions.
-
 
 ## Installation and Setup
 
@@ -25,7 +23,7 @@ This application was created for:
 - Set up any necessary environment variables or API keys.
   - This project is using SDK key and Secret from the Singular Platform, referenced from the `local.properties` file.
 - Add the dependencies from the Singular Android SDK Installation Guide: [HERE](https://support.singular.net/hc/en-us/articles/360037581952-Android-SDK-Integration-Guide)
-- Make sure you update the `AndroidMaifest.xml` file with the required permissions:
+- Make sure you update the `AndroidManifest.xml` file with the required permissions:
 ```xml
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -34,7 +32,7 @@ This application was created for:
   <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
 ```
 - Add the Application Class name `android:name=".MyApplication"` to the `AndroidManifest.xml` file.
-- Make sure you update the `AndroidMaifest.xml` file with the required `intent-filter` to support Singular Links:
+- Make sure you update the `AndroidManifest.xml` file with the required `intent-filter` to support Singular Links:
 ```xml
 <intent-filter>
     <data android:scheme="YOUR_APP_SCHEME_HERE" />
@@ -58,8 +56,21 @@ This application was created for:
 
 ## Usage
 
-- Describe how to use your app.
-- Provide screenshots or GIFs.
+To examine the behavior of Singular Links, the deferred deeplink after a new install, or the deeplink if the app is already installed, follow the steps below.
+- You will need a Singular Custom Link, configured for this app to perform the testing. 
+- Send the Singular Link to an email account you can access from the Emulator.
+1. Open the Android Emulator and make sure the App is Uninstalled.
+2. Navigate to your email app and click the Singular Link.
+3. Now, build the App from Android Studio to the Emulator. (This is simulating a User installing from the App Store)
+4. When the App Opens, navigate to the `Logcat` pane in Android Studio and review the Logs (Filter for the tag:Singular). From the output, you will see the Deferred Deeplink (DDL) logged from the Singular SDK Link Handler.
+5. Now, background the app.
+6. Navigate back to your email app and click the link again. 
+7. The App should open directly and the logcat output will display the deeplink provided from Singular.
+8. Now, close the app.
+9. Navigate back to your email app and click the link again.
+10. The App should open directly and the logcat output will display the deeplink provided from Singular.
+
+This testing illustrates the desired behavior of Singular Links.
 
 ## Contributing
 
