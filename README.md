@@ -62,6 +62,7 @@ To examine the behavior of Singular Links, the deferred deeplink after a new ins
 - Send the Singular Link to an email account you can access from the Emulator.
 1. Open the Android Emulator and make sure the App is Uninstalled.
 2. Navigate to your email app and click the Singular Link.
+   ![Email Screenshot with Singular Link](https://github.com/jared-singular/android-kotlin-mainactivity/blob/main/screenshots/androidkotlinmainactivity_singular_email_link.png)
 3. Now, build the App from Android Studio to the Emulator. (This is simulating a User installing from the App Store)
 4. When the App Opens, navigate to the `Logcat` pane in Android Studio and review the Logs (Filter for the tag:Singular). From the output, you will see the Deferred Deeplink (DDL) logged from the Singular SDK Link Handler.
    ![Logcat Screenshot of Deferred Deeplink](https://github.com/jared-singular/android-kotlin-mainactivity/blob/main/screenshots/androidkotlinmainactivity_logcat_deferred_deeplink.png)
