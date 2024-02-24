@@ -80,7 +80,7 @@ class MainActivity : ComponentActivity() {
 
     }
 
-    fun sendSingularEvents(){
+    private fun sendSingularEvents(){
         /* Singular Standard Events: Full List and Recommended Events by Vertical
         See: https://support.singular.net/hc/en-us/articles/7648172966299-Singular-Standard-Events-Full-List-and-Recommended-Events-by-Vertical */
 
