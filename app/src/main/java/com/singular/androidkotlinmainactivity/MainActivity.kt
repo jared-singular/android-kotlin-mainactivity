@@ -32,6 +32,9 @@ class MainActivity : ComponentActivity() {
         // Initialize Singular SDK from MainActivity onCreate
         initSingularSDK()
 
+        // Call function to send a group of Singular Events for Testing.
+        sendSingularEvents()
+
         setContent {
             AndroidKotlinMainActivityTheme {
                 // A surface container using the 'background' color from the theme
