@@ -57,7 +57,8 @@ This application was created for:
 ## Usage
 
 To examine the behavior of Singular Links, the deferred deeplink after a new install, or the deeplink if the app is already installed, follow the steps below.
-- You will need a Singular Custom Link, configured for this app to perform the testing. 
+- You will need a Singular Custom Link, configured for this app to perform the testing.
+  - Make sure the App is configured with the scheme on the Singular Apps Page [Screenshot](https://github.com/jared-singular/android-kotlin-mainactivity/blob/main/screenshots/androidkotlinmainactivity_singular_apps_page_config.png)
 - Send the Singular Link to an email account you can access from the Emulator.
 1. Open the Android Emulator and make sure the App is Uninstalled.
 2. Navigate to your email app and click the Singular Link.
@@ -71,6 +72,7 @@ To examine the behavior of Singular Links, the deferred deeplink after a new ins
 8. Now, close the app.
 9. Navigate back to your email app and click the link again.
 10. The App should open directly and the logcat output will display the deeplink provided from Singular.
+    ![alt text](https://github.com/jared-singular/android-kotlin-mainactivity/blob/main/screenshots/androidkotlinmainactivity_logcat_deeplink_closed.png)
 
 This testing illustrates the desired behavior of Singular Links.
 
