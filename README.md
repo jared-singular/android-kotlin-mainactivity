@@ -64,15 +64,16 @@ To examine the behavior of Singular Links, the deferred deeplink after a new ins
 2. Navigate to your email app and click the Singular Link.
 3. Now, build the App from Android Studio to the Emulator. (This is simulating a User installing from the App Store)
 4. When the App Opens, navigate to the `Logcat` pane in Android Studio and review the Logs (Filter for the tag:Singular). From the output, you will see the Deferred Deeplink (DDL) logged from the Singular SDK Link Handler.
+   ![Logcat Screenshot of Deferred Deeplink](https://github.com/jared-singular/android-kotlin-mainactivity/blob/main/screenshots/androidkotlinmainactivity_logcat_deferred_deeplink.png)
 5. Now, background the app.
 6. Navigate back to your email app and click the link again. 
 7. The App should open directly and the logcat output will display the deeplink provided from Singular.
-   ![alt text](https://github.com/jared-singular/android-kotlin-mainactivity/blob/main/screenshots/androidkotlinmainactivity_logcat_deeplink_background.png)
+   ![Logcat Screenshot of Deeplink from app in background](https://github.com/jared-singular/android-kotlin-mainactivity/blob/main/screenshots/androidkotlinmainactivity_logcat_deeplink_background.png)
 
 8. Now, close the app.
 9. Navigate back to your email app and click the link again.
 10. The App should open directly and the logcat output will display the deeplink provided from Singular.
-    ![alt text](https://github.com/jared-singular/android-kotlin-mainactivity/blob/main/screenshots/androidkotlinmainactivity_logcat_deeplink_closed.png)
+    ![Logcat Screenshot of Deeplink from closed app](https://github.com/jared-singular/android-kotlin-mainactivity/blob/main/screenshots/androidkotlinmainactivity_logcat_deeplink_closed.png)
 
 This testing illustrates the desired behavior of Singular Links.
 
