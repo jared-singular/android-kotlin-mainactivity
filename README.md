@@ -66,6 +66,8 @@ To examine the behavior of Singular Links, the deferred deeplink after a new ins
 5. Now, background the app.
 6. Navigate back to your email app and click the link again. 
 7. The App should open directly and the logcat output will display the deeplink provided from Singular.
+   ![alt text](https://github.com/jared-singular/android-kotlin-mainactivity/blob/main/screenshots/androidkotlinmainactivity_logcat_deeplink_background.png)
+
 8. Now, close the app.
 9. Navigate back to your email app and click the link again.
 10. The App should open directly and the logcat output will display the deeplink provided from Singular.
