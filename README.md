@@ -1,10 +1,23 @@
 # Android Kotlin MainActivity Test App
-This application was created for:
-* Testing and illustrating the Application Lifecycles.
-* Testing and illustrating the MainActivity Lifecycles.
-* Invoking the Singular SDK from the MainActivity Class to track Installs.
-* Testing the handling of a Singular Link with deeplink and deferred deep linking enabled.
-* Triggering in-app events using Singular functions.
+When integrating third-party SDKs into an Android app, deciding where to initialize them is crucial for proper functioning and maintainability.
+
+## MainActivity Initialization:
+Initializing SDKs in the `MainActivity` is an alternative. It happens when the main activity is created.
+
+* Advantages:
+  * Lazy Initialization: SDKs load only when needed (e.g., when the user navigates to a specific feature).
+  * Granular Control: You can initialize SDKs based on specific screens or features.
+* Considerations:
+  * Activity Lifecycle: Be aware of activity lifecycle events (e.g., `onCreate`, `onResume`).
+  * Fragment Dependencies: If your app uses fragments, ensure proper initialization.
+  * Debug/Release Modes: Handle different versions.
+
+## This application was created for:
+* Demonstrating and Testing a Singular SDK implementation using the `MainActivity`.
+    * Invoking the Singular SDK from the MainActivity to track Installs.
+    * Testing the handling of a Singular Link with Deferred Deep Linking (DDL).
+    * Testing the handling of a Singular Link with deep linking (DL).
+    * Triggering in-app events using Singular functions.
 
 ## Installation and Setup
 
